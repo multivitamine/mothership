@@ -1,0 +1,29 @@
+@font-face {
+  font-family: 'Cosmic';
+  src: local('Cosmic'), url(./fonts/ca.ttf) format('truetype');
+}
+body {
+  margin: 0;
+  font-family: 'Cosmic';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-shadow: 0px 1px 1px rgba(0, 0, 0, 0.3);
+  color: #fff;
+  background: url(./mothership.jpg) no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  letter-spacing: 2px;
+}
+table, th, td {
+  padding: 10px;
+  font-size: 18px;
+  border: 1px solid white; 
+  border-collapse: collapse;
+  }
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}

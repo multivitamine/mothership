@@ -1,0 +1,17 @@
+{
+    "window.zoomLevel": 0,
+    "eslint.autoFixOnSave": true,
+    "workbench.colorTheme": "Atom One Dark",
+    "editor.fontLigatures": true,
+    "editor.fontFamily": "Fira Code, Consolas, 'Courier New', monospace",
+    "search.location": "panel",
+    "git.enabled": false,
+    "prettier.jsxSingleQuote": true,
+    "prettier.useTabs": false,
+    "prettier.jsonEnable": [],
+    "prettier.openOutput": false,
+    "javascript.updateImportsOnFileMove.enabled": "always",
+    "editor.codeActionsOnSave": {
+        "source.fixAll.eslint": true
+    }
+ }

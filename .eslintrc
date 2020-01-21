@@ -1,0 +1,29 @@
+{
+  "extends": ["prettier", "prettier/react"],
+  "rules": {
+    "jsx-quotes": ['error', 'prefer-double'],
+    "react/jsx-curly-spacing": ['error', 'never', { allowMultiline: true }],
+    "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
+    "linebreak-style": 0,
+  	"func-names": ["error", "never"],
+  	"no-console": ["error", { allow: ["log", "warn", "error"] }],
+    "no-restricted-globals": 0,
+    "react/jsx-no-undef": "error",
+    "react/react-in-jsx-scope": "error",
+    "react/jsx-tag-spacing": ["error", {
+      "closingSlash": "never",
+      "beforeSelfClosing": "always",
+      "afterOpening": "never"
+    }],
+		"semi": [2, "always"],
+		"prefer-arrow-callback": [ "error", { "allowNamedFunctions": true } ],
+		"object-curly-spacing": ["error", "always"],
+		"keyword-spacing": ["error", { "before": true }],
+		"no-var": "error",
+		"no-const-assign": "error",
+		"prettier/prettier": "error",
+    "jsx-a11y/href-no-hash": "off",
+    "jsx-a11y/anchor-is-valid": ["warn", { "aspects": ["invalidHref"] }]
+  },
+  "plugins": ["prettier"]
+}

@@ -21,7 +21,8 @@ table, th, td {
   font-size: 18px;
   border: 1px solid white; 
   border-collapse: collapse;
-  }
+  background-color: rgba(0,0,0,.3);
+}
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",

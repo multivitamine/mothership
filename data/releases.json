@@ -1,7 +1,86 @@
-[
+[  
   {
-    "name": "CMS",
+  "name": "CMS",
+  "version": "6.1.0",
+  "key": "cms",
+  "futureVersion": ""
+  },
+  {
+    "name": "Catalog",
+    "version": "3.13.0",
+    "key": "catalog",
+    "futureVersion": ""
+  },
+  {
+    "name": "CRM",
+    "version": "2.10.0",
+    "key": "crm",
+    "futureVersion": ""
+  },
+  {
+    "name": "Survey",
+    "version": "3.0.1",
+    "key": "survey",
+    "futureVersion": ""
+  },
+  {
+    "name": "Security",
+    "version": "1.9.0",
+    "key": "security",
+    "futureVersion": ""
+  },
+  {
+    "name": "Caching",
+    "version": "2.4.1",
+    "key": "caching",
+    "futureVersion": ""
+  },
+  {
+    "name": "Utilities",
+    "version": "2.5.0",
+    "key": "utilities",
+    "futureVersion": ""
+  },
+  {
+    "name": "Notifications",
+    "version": "3.0.1",
+    "key": "notifications",
+    "futureVersion": ""
+  },
+  {
+    "name": "Settings",
+    "version": "2.8.0",
+    "key": "settings",
+    "futureVersion": ""
+  },
+  {
+    "name": "Scheduler",
+    "version": "3.1.0",
+    "key": "scheduler",
+    "futureVersion": ""
+  },
+  {
+    "name": "OLD CMS",
+    "version": "3.4.1",
+    "key": "oldcms",
+    "futureVersion": ""
+  },
+  {
+    "name": "Reporting",
+    "version": "2.0.9",
+    "key": "reporting",
+    "futureVersion": ""
+  },
+  {
+    "name": "Throttle",
     "version": "1.0.0",
-    "key": "CMS"
+    "key": "throttle",
+    "futureVersion": ""
+  },
+  {
+    "name": "IIBE",
+    "version": "1.1.0",
+    "key": "iibe",
+    "futureVersion": ""
   }
 ]

@@ -1,4 +1,4 @@
-const websiteUrl = 'http://localhost:2000/';
+const websiteUrl = 'https://mothership.pangaeatest.nl/';
 
 export const API_ROOT = process.env.NODE_ENV === 'production' ? '/api/' : websiteUrl + 'api/';
 

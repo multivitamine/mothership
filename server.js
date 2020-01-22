@@ -21,9 +21,8 @@ if(!releaseFileExists){
 var releases = fsFunctions.readFileSync('./data/releases.json');
 
 //CREATE SERVER
-console.log(process.env.PORT);
 
-var server = app.listen(2000, listening);
+var server = app.listen( process.env.PORT);
 function listening() {
     console.log('server listening');
 }

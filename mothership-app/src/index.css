@@ -15,6 +15,7 @@ body {
   -o-background-size: cover;
   background-size: cover;
   letter-spacing: 2px;
+  text-shadow: 2px 2px black;
 }
 table, th, td {
   padding: 10px;

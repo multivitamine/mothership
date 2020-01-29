@@ -14,11 +14,11 @@ export const StyledLogoContainer = styled.div`
     }
 `;
 export const StyledNavContainer = styled.nav`
-    width: 30%;
+    width: 20%;
     float: left;
 `;
 export const StyledBody = styled.div`
-    width: 70%; 
+    width: 80%; 
     float: left;
 `;
 export const StyledLi = styled.li`

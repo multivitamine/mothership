@@ -10,11 +10,11 @@ var fs = require("fs");
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
-
-app.use(function(req, res, next) {
-  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-  next();
-});
+app.use(cors());
+// app.use(function(req, res, next) {
+//   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+//   next();
+// });
 //GET JSONS
 var releaseFileExists = fsFunctions.fileExists('./data/releases.json');
 if(!releaseFileExists){
@@ -25,7 +25,7 @@ if(!releaseFileExists){
 var releases = fsFunctions.readFileSync('./data/releases.json');
 
 //CREATE SERVER
-var server = app.listen( process.env.PORT);
+var server = app.listen(3002);
 function listening() {
     console.log('server listening');
 }
@@ -47,10 +47,24 @@ function getReleases(request, response) {
 //GET ERRORLOGS
 app.get('/api/errorlogging', getErrors);
 function getErrors(request, response) {
+   
+    const errorLogDates = [];
+    const files = fs.readdirSync('./data/errorlogging');
+    console.log(files);
     
-    const currentDate = dateFunctions.getDate();
-    var errors = fsFunctions.readFileSync(`./data/errorlogging/${currentDate}.json`);
-    response.send(errors);
+    //const currentDate = dateFunctions.getDate();
+    //var errors = fsFunctions.readFileSync(`./data/errorlogging/${currentDate}.json`);
+
+    response.send(files);
+}
+app.get('/api/errorlogging/:date', getErrorsByDate);
+function getErrorsByDate(request, response) {
+    var data = request.params;
+    var date = data.date;
+    
+    var errorFile = fsFunctions.readFileSync(`./data/errorlogging/${date}.json`);
+
+    response.send(errorFile);
 }
 //POST ERROR
 app.post('/api/errorlogging', function (request, res, next) {

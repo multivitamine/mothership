@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
-
+import { BrowserRouter as Router, Route, Link} from "react-router-dom";
 //components
 import Header from './components/header';
 import HomeText from './components/homeText';
 import Releases from './components/releases';
+import ErrorlogsDetail from './components/errorlogsdetail';
 import Errorlogs from './components/errorlogs';
 
 
@@ -15,9 +15,10 @@ import { StyledHeaderContainer, StyledNavContainer, StyledLi, StyledUl, StyledBo
 import { API_ROOT } from "./constants/endpoints";
 
 function App(props) {
+  console.log(props)
 
   const [releases, setReleases] = useState([]);
-  const [errors, setErrors] = useState([]);
+  const [errorlogs, setErrorlogs] = useState([]);
 
   useEffect(() => {
     async function fetchReleases() {
@@ -37,12 +38,12 @@ function App(props) {
       const response = await fetch(`${API_ROOT}errorlogging`);
       const json = await response.json();
       
-      setErrors(json);
+      setErrorlogs(json);
     }
 
     fetchErrors();
     
-  }, errors);
+  }, []);
  
   return (
 
@@ -59,7 +60,8 @@ function App(props) {
       <StyledBody>
         <Route path="/" exact  component={HomeText} />
         <Route path="/releases" component={() => <Releases releases={releases} />} />
-        <Route path="/errorlogs" component={() => <Errorlogs errors={errors} />} />
+        <Route path="/errorlogs" exact component={() => <Errorlogs errorlogs={errorlogs} />} />
+        <Route path="/errorlogs/:date" exact component={() => <ErrorlogsDetail />} />
       </StyledBody>
     </StyledHeaderContainer>
   </Router>

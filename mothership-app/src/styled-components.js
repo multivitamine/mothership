@@ -28,6 +28,7 @@ export const StyledLi = styled.li`
     a {
         color: black;
         text-decoration: none;
+        font-size: 22px;
     }
     a:hover {
         text-decoration: underline;
@@ -50,4 +51,11 @@ export const StyledLink = styled.p`
 `;
 export const StyledUl = styled.ul`
     list-style: none;
+`;
+export const StyledLogTD = styled.td`
+    a{
+        color: white;   
+        text-decoration: none;
+    }
+ 
 `;

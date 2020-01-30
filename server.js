@@ -10,11 +10,11 @@ var fs = require("fs");
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
-app.use(cors());
-// app.use(function(req, res, next) {
-//   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-//   next();
-// });
+//app.use(cors());
+app.use(function(req, res, next) {
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  next();
+});
 //GET JSONS
 var releaseFileExists = fsFunctions.fileExists('./data/releases.json');
 if(!releaseFileExists){
@@ -25,7 +25,7 @@ if(!releaseFileExists){
 var releases = fsFunctions.readFileSync('./data/releases.json');
 
 //CREATE SERVER
-var server = app.listen(3002);
+var server = app.listen( process.env.PORT);
 function listening() {
     console.log('server listening');
 }

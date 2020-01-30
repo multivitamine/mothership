@@ -15,7 +15,6 @@ import { StyledHeaderContainer, StyledNavContainer, StyledLi, StyledUl, StyledBo
 import { API_ROOT } from "./constants/endpoints";
 
 function App(props) {
-  console.log(props)
 
   const [releases, setReleases] = useState([]);
   const [errorlogs, setErrorlogs] = useState([]);
@@ -40,7 +39,7 @@ function App(props) {
       
       setErrorlogs(json);
     }
-
+    
     fetchErrors();
     
   }, []);

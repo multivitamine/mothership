@@ -79,7 +79,7 @@ app.post('/api/errorlogging', function (request, res, next) {
 
         fs.writeFile(`./data/errorlogging/${currentDate}.json`, JSON.stringify(errorLogs, null, 2), finished)
     
-        response.send(errorLogs)
+        res.send(errorLogs)
     }
 
     res.send(errorLogs);

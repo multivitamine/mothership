@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Route, Link} from "react-router-dom";
+import io from "socket.io-client";
 //components
 import Header from './components/header';
 import HomeText from './components/homeText';
@@ -14,11 +15,20 @@ import { StyledHeaderContainer, StyledNavContainer, StyledLi, StyledUl, StyledBo
 //constants
 import { API_ROOT } from "./constants/endpoints";
 
+let socket;
+const endpoint = 'http://localhost:3002';
+
 function App(props) {
   console.log(props)
 
   const [releases, setReleases] = useState([]);
   const [errorlogs, setErrorlogs] = useState([]);
+
+  useEffect(() => {
+    socket = io(endpoint)
+    console.log();
+    
+  }, []);
 
   useEffect(() => {
     async function fetchReleases() {

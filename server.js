@@ -1,4 +1,6 @@
 var express = require('express');
+var http = require('http');
+const socketio = require('socket.io');
 var bodyParser = require("body-parser");
 var app = express();
 var fsFunctions = require('./lib/fs-functions');
@@ -7,6 +9,8 @@ var dateFunctions = require('./lib/date-functions');
 const path = require('path');
 const cors = require("cors");
 var fs = require("fs");
+const server = http.createServer(app);
+const io = socketio(server);
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
@@ -25,7 +29,18 @@ if(!releaseFileExists){
 var releases = fsFunctions.readFileSync('./data/releases.json');
 
 //CREATE SERVER
-var server = app.listen(3002);
+server.listen(process.env.PORT || 3002, () => console.log(`Server has started. `));
+
+//io shizzle
+
+io.on('connection', (socket) => {
+    console.log('connected');
+    socket.on('disconnect', () => {
+        console.log('User had lefy')
+    })
+})
+
+//var server = app.listen(3002);
 function listening() {
     console.log('server listening');
 }

@@ -17,30 +17,46 @@ import { API_ROOT } from "./constants/endpoints";
 
 let socket;
 const endpoint = 'http://localhost:3002';
-
+socket = io(endpoint)
+function subscribeToTimer(interval, cb) {
+  socket.on('timer', timestamp => cb(null, timestamp));
+  socket.emit('subscribeToTimer', 1000);
+} 
+// function getAllConnectedProjects(cb) {
+//   socket.on("sendConnectedUsers", users => cb(null, users));
+// } 
 function App(props) {
-  console.log(props)
 
   const [releases, setReleases] = useState([]);
   const [errorlogs, setErrorlogs] = useState([]);
-
+  const [timestamp, setTimestamp] = useState('');
+  const [projectUsers, setConnectedUsers] = useState('');
+ 
   useEffect(() => {
-    socket = io(endpoint)
-    console.log();
     
-  }, []);
-
-  useEffect(() => {
-    async function fetchReleases() {
-      const response = await fetch(`${API_ROOT}releases`);
-      const json = await response.json();
+    socket.on("sendConnectedUsers",  users => { 
+      console.log('sendConnectedUsers');
       
-      setReleases(json);
-    }
+      setConnectedUsers(users);
+    });
 
-    fetchReleases();
+    //subscribeToTimer(100, (err, timestamp) => setTimestamp(timestamp));
+    //getAllConnectedProjects((users) => setConnectedUsers(users))
+
+    console.log(projectUsers, 'projectUsers');
+  }, [projectUsers]);
+  
+  // useEffect(() => {
+  //   async function fetchReleases() {
+  //     const response = await fetch(`${API_ROOT}releases`);
+  //     const json = await response.json();
+      
+  //     setReleases(json);
+  //   }
+
+  //   fetchReleases();
     
-  }, releases);
+  // }, releases);
  
 
   useEffect(() => {
@@ -54,7 +70,8 @@ function App(props) {
     fetchErrors();
     
   }, []);
- 
+
+  const users = projectUsers.length > 0 ? projectUsers[0].count : 0;
   return (
 
     <Router>
@@ -68,6 +85,11 @@ function App(props) {
       </StyledNavContainer>
       
       <StyledBody>
+      <div>
+        <p >
+          Total users connected {users}
+        </p>
+      </div>
         <Route path="/" exact  component={HomeText} />
         <Route path="/releases" component={() => <Releases releases={releases} />} />
         <Route path="/errorlogs" exact component={() => <Errorlogs errorlogs={errorlogs} />} />

@@ -32,12 +32,42 @@ var releases = fsFunctions.readFileSync('./data/releases.json');
 server.listen(process.env.PORT || 3002, () => console.log(`Server has started. `));
 
 //io shizzle
-
+const connectedUser = []
 io.on('connection', (socket) => {
-    console.log('connected');
+    const host = socket.handshake.headers.host;
+    console.log(host);
+    
+    const newHostIndex = connectedUser.findIndex(x => socket.handshake.headers.host === x.hostName);
+    
+    if(newHostIndex === -1){
+        console.log(1);
+        
+        connectedUser.push({hostName: socket.handshake.headers.host, count:1})
+    }else{
+        console.log(2);
+        connectedUser[newHostIndex].count = connectedUser[newHostIndex].count + 1;
+    }
+    // socket.on('subscribeToTimer', (interval) => {
+    //     console.log('client is subscribing to timer with interval ', interval);
+    //     setInterval(() => {
+    //         socket.emit('timer', new Date());
+    //     }, interval);
+    //   });
+    socket.emit('sendConnectedUsers', connectedUser);
+    socket.broadcast.emit('sendConnectedUsers', connectedUser);
     socket.on('disconnect', () => {
-        console.log('User had lefy')
+        
+        const newHostIndex = connectedUser.findIndex(x => host === x.hostName);
+        console.log(newHostIndex, 'índex');
+        
+        connectedUser[newHostIndex].count = connectedUser[newHostIndex].count - 1;
+        
+        socket.broadcast.emit('sendConnectedUsers', connectedUser);
+        console.log(connectedUser, 'test');
     })
+    console.log(connectedUser, 'test');
+    
+    socket.broadcast.emit('sendConnectedUsers', connectedUser);
 })
 
 //var server = app.listen(3002);

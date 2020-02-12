@@ -66,7 +66,7 @@ function App(props) {
       
       setErrorlogs(json);
     }
-
+    
     fetchErrors();
     
   }, []);

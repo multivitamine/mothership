@@ -17,8 +17,10 @@ function ErrorlogsDetail(props) {
       
       setErrors(json);
     }
-
+    setInterval(() => {
+      
     fetchErrors();
+    }, 5000);
     
   }, errors);
 

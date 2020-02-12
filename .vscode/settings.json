@@ -4,7 +4,6 @@
     "workbench.colorTheme": "Atom One Dark",
     "editor.fontLigatures": true,
     "editor.fontFamily": "Fira Code, Consolas, 'Courier New', monospace",
-    "search.location": "panel",
     "git.enabled": false,
     "prettier.jsxSingleQuote": true,
     "prettier.useTabs": false,

@@ -4,7 +4,7 @@ import { StyledBody } from '../styled-components'
 
 function HomeText(props) {
     const releaseList = props.releases.map((release) => {
-    return <tr><td>{release.name}</td><td>{release.version}</td></tr>
+    return <tr><td>{release.name}</td><td>{release.version}</td><td>{release.dependentVersion}</td></tr>
     });
     return (
     <React.Fragment>
@@ -16,7 +16,7 @@ function HomeText(props) {
                     <tr>
                         <th>Releasenaam</th>
                         <th>Versienummer</th>
-                     
+                        <th>Dependent version</th>
                     </tr>
                     {releaseList}
                 </tbody>
